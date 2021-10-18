@@ -1,0 +1,6 @@
+#Project Files
+node_modules
+
+#VS Code
+.vscode
+.history

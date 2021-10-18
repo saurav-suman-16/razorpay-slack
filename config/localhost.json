@@ -1,0 +1,11 @@
+{
+  "db": {
+    "url": "mongodb://localhost:27017",
+    "name": "razorpay-slack"
+  },
+  "slack": {
+    "app_id": "A02J58LL3S4",
+    "client_id": "2181483716615.2617292683888",
+    "client_secret": "9522e2ee3fa8cc1cf003d8a168847821"
+  }
+}

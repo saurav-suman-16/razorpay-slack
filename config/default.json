@@ -1,0 +1,7 @@
+{
+  "port": 3003,
+  "slackBaseUrl": "https://slack.com",
+  "razorPayApiKeyLink": "https://dashboard.razorpay.com/app/keys",
+  "razorPayPaymentLinkGenerationLink": "https://api.razorpay.com/v1/payment_links/",
+  "eventTimeout": 10000
+}
