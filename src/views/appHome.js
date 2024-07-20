@@ -1,14 +1,14 @@
-const config = require('config');
+const config = require("config");
 
 exports.appHomeView = ({ workspace = {}, userId }) => {
   const { razorpayKeySecret, razorpayKeyId } = workspace;
   const view = {
-    type: 'home',
+    type: "home",
     blocks: [
       {
-        type: 'section',
+        type: "section",
         text: {
-          type: 'plain_text',
+          type: "plain_text",
           text: `
           Hello 👋🏼\n
 I can help you generate a payment link for your razorpay account without leaving slack.\n
@@ -20,21 +20,22 @@ You can generate the key form the API Keys tab in Settings on Razorpay Dashboard
         },
       },
       {
-        type: 'actions',
+        type: "actions",
         elements: [
           {
-            type: 'button',
+            type: "button",
             text: {
-              type: 'plain_text',
-              text: 'Razorpay Dashboard',
+              type: "plain_text",
+              text: "Razorpay Dashboard",
               emoji: true,
             },
+            action_id: 'acknowledge_request',
             url: config.razorPayApiKeyLink,
           },
         ],
       },
       {
-        type: 'divider',
+        type: "divider",
       },
     ],
   };
@@ -42,62 +43,62 @@ You can generate the key form the API Keys tab in Settings on Razorpay Dashboard
     if (razorpayKeySecret && razorpayKeyId) {
       view.blocks.push(
         {
-          type: 'section',
+          type: "section",
           text: {
-            type: 'mrkdwn',
-            text: 'You have a razorpay account configured 👍🏽',
+            type: "mrkdwn",
+            text: "You have a razorpay account configured 👍🏽",
           },
           accessory: {
-            type: 'button',
+            type: "button",
             text: {
-              type: 'plain_text',
-              text: '🧾 View Configuration',
+              type: "plain_text",
+              text: "🧾 View Configuration",
               emoji: true,
             },
-            action_id: 'viewRazorpayConfiguration',
+            action_id: "viewRazorpayConfiguration",
           },
         },
         {
-          type: 'section',
+          type: "section",
           text: {
-            type: 'mrkdwn',
-            text: 'Need to edit the config?',
+            type: "mrkdwn",
+            text: "Need to edit the config?",
           },
           accessory: {
-            type: 'button',
+            type: "button",
             text: {
-              type: 'plain_text',
-              text: '📝 Edit Configuration',
+              type: "plain_text",
+              text: "📝 Edit Configuration",
               emoji: true,
             },
-            action_id: 'razorpayConfiguration',
+            action_id: "razorpayConfiguration",
           },
-        },
+        }
       );
     } else {
       view.blocks.push({
-        type: 'section',
+        type: "section",
         text: {
-          type: 'mrkdwn',
-          text: '🤔 Hmm...,\nLooks like I do not have any razorpay account configured for you.',
+          type: "mrkdwn",
+          text: "🤔 Hmm...,\nLooks like I do not have any razorpay account configured for you.",
         },
         accessory: {
-          type: 'button',
+          type: "button",
           text: {
-            type: 'plain_text',
-            text: '⚙️ Configure Now',
+            type: "plain_text",
+            text: "⚙️ Configure Now",
             emoji: true,
           },
-          action_id: 'razorpayConfiguration',
+          action_id: "razorpayConfiguration",
         },
       });
     }
   } else {
     view.blocks.push({
-      type: 'section',
+      type: "section",
       text: {
-        type: 'mrkdwn',
-        text: '🤔 Hmm...,\nLooks like You are not the installer of the app. Only the installer has the access to add or update the razorpay configuration',
+        type: "mrkdwn",
+        text: `🤔 Hmm...,\nLooks like You are not the installer of the app. Only the installer has the access to add or update the razorpay configuration. Please contact <@${workspace.memberId}>`,
       },
     });
   }

@@ -1,9 +1,6 @@
-const DPI = require('@DPI');
+const DPI = require("@DPI");
 
-const managersList = [
-    'slack',
-    'workspace',
-];
+const managersList = ["workspace"];
 
 managersList.forEach((manager) => {
   DPI.factory(`${manager}Manager`, () => require(`./${manager}`));

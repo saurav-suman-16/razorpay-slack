@@ -1,9 +1,6 @@
-const DPI = require('@DPI');
+const DPI = require("@DPI");
 
-const utilsList = [
-    'slackApis',
-    'razorpay',
-];
+const utilsList = ["secrets", "slackApis", "razorpay"];
 
 utilsList.forEach((util) => {
   DPI.factory(util, () => require(`./${util}`));

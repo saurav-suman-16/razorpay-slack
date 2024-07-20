@@ -1,28 +1,23 @@
-require('module-alias/register');
+require("module-alias/register");
+const mongoose = require("mongoose");
+const express = require("express");
+const logger = require("morgan");
+const { port, db } = require("config");
 
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const mongoose = require('mongoose');
-const { port, db } = require('config');
-const DPI = require('@DPI');
+const { app, receiver } = require("./bolt-app");
 
-const app = express();
+const { router } = receiver;
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+router.use(logger("dev"));
+router.use(express.json());
+router.use(express.urlencoded({ extended: false }));
 
-require('./DBA');
-require('./utils');
-require('./managers');
-require('./views');
-require('./routes').init(app);
-
-app.get(`/health`, (req, res) => {
-  res.json({ status: 'Server running.' });
-});
+require("./src/DBA");
+require("./src/utils");
+require("./src/managers");
+require("./src/views");
+require("./src/routes").init(router);
+require("./src/handlers")(app);
 
 mongoose
   .connect(`${db.url}/${db.name}`, {
@@ -30,14 +25,12 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('Mongo Connected');
+    console.log("Mongo Connected");
+  })
+  .then(async () => {
+    await app.start(port);
+    console.log("Razorpay Server started on", port);
   })
   .catch((error) => {
-    console.log('Error Connecting Mongo', error);
+    console.log("Error Connecting Mongo", error);
   });
-
-app.listen(port, () => {
-  console.log('Razorpay Server started on', port);
-});
-
-module.exports = app;

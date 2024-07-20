@@ -1,10 +1,9 @@
 {
   "db": {
-    "url": "mongodb://localhost:27017",
+    "url": "mongodb+srv://saurav:Saurav%40sw%40123@razorpay-slack.pao84.mongodb.net",
     "name": "razorpay-slack"
   },
   "slack_appId": "A072DUXTCG6",
-  "slack_stateSecret": "31Olg9cmJfnzjraY9T3v",
   "slack_clientId": "7081962067206.7081983930550",
   "slack_clientSecret": "85d5d98c606105b8c83e7a4abee34004",
   "slack_signingSecret": "6c4cc31f07defe63d313c2f15c0d31c3",
