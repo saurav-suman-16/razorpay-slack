@@ -1,11 +1,11 @@
 {
   "db": {
     "url": "mongodb://localhost:27017",
-    "name": "razorpay-slack"
+    "name": "rs"
   },
-  "slack_appId": "A072DUXTCG6",
-  "slack_clientId": "7081962067206.7081983930550",
-  "slack_clientSecret": "85d5d98c606105b8c83e7a4abee34004",
-  "slack_signingSecret": "6c4cc31f07defe63d313c2f15c0d31c3",
-  "slack_botToken": "xoxb-7081962067206-7454781554164-irFhjqyAJx1DxOrKU9xHsvQV"
+  "slack_appId": "",
+  "slack_clientId": "",
+  "slack_clientSecret": "",
+  "slack_signingSecret": "",
+  "slack_botToken": ""
 }
