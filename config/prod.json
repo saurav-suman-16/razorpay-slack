@@ -1,6 +1,6 @@
 {
   "db": {
-    "url": "mongodb+srv://saurav:Saurav%40sw%40123@razorpay-slack.pao84.mongodb.net",
+    "url": "mongodb://localhost:27017",
     "name": "razorpay-slack"
   },
   "slack_appId": "A072DUXTCG6",
